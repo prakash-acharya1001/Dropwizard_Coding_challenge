@@ -1,0 +1,44 @@
+#-------------------Server Configuration------------
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+#--------------- Database Configuration -----------------------------
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  user: root
+  password: mysqlrootpassword
+  url: jdbc:mysql://localhost:3306/geolocation?createDatabaseIfNotExist=true
+  maxWaitForConnection: 1s
+  validationQuery: "/* MyApplication Health Check */ SELECT 1"
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.show_sql: true
+    hibernate.hbm2ddl.auto: update
+
+#----------------- Logging Configuration ---------------
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      threshold: INFO
+      currentLogFilename: ./logs/geolocation.log
+      archivedLogFilenamePattern: ./logs/egeolocation-%d.log.gz
+      archivedFileCount: 5
+    - type: console
+      threshold: INFO
+      target: stderr
+
+

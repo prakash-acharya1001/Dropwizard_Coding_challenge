@@ -15,7 +15,7 @@ server:
 database:
   driverClass: com.mysql.cj.jdbc.Driver
   user: root
-  password: mysqlrootpassword
+  password: root
   url: jdbc:mysql://localhost:3306/geolocation?createDatabaseIfNotExist=true
   maxWaitForConnection: 1s
   validationQuery: "/* MyApplication Health Check */ SELECT 1"
